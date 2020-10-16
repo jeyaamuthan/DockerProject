@@ -16,8 +16,9 @@ services:
       NODE_ENV: development
       PORT: 3000
     working_dir: /usr/src/app
-    # volumes:
-    #   - ./Profile-veiwer:/usr/src/app
+    volumes:
+      - ./Profile-veiwer/:/usr/src/app
+      - /usr/src/app/node_modules
     links:
       - server:server
     
