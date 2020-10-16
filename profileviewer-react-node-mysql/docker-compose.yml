@@ -1,4 +1,4 @@
-version: '2.3'
+version: '3.1'
 services:
 
   client:
@@ -11,12 +11,13 @@ services:
     ports:
       - 3000:3000
     stdin_open: true
+    tty: true
     environment:
-      #NODE_ENV: development
+      NODE_ENV: development
       PORT: 3000
     working_dir: /usr/src/app
-    volumes:
-      - ./Profile-veiwer:/usr/src/app
+    # volumes:
+    #   - ./Profile-veiwer:/usr/src/app
     links:
       - server:server
     
@@ -32,7 +33,7 @@ services:
     environment:
         DATABASE_HOST: "mysql"
         DATABASE_NAME: "test_db"
-        DATABASE_USER: "user"
+        DATABASE_USER: "root"
         DATABASE_PASSWORD: "Beyondm@6" 
     working_dir: /usr/src/app
     volumes:
@@ -47,7 +48,7 @@ services:
       - mysql:mysql
 
   mysql:
-    container_name: mysqldb
+    container_name: mysqldbtest
     image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
     environment:
